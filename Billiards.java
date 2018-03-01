@@ -96,30 +96,13 @@ public class Billiards extends JFrame {
 	private class StopListener implements ActionListener {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
-			// Por no complicar mucho más la estructura del código
-			// de la práctica hemos incluido aquí mismo algunas comprobaciones
-			// para mantener consistente la ejecución en relación
-			// a las posibles interacciones del usuario.
-			if (hilos == null)
-				// Sólo creamos el array de hilos la primera vez
-				hilos = new Thread[N_BALL];
-
-			for (int i = 0; i < N_BALL; i++) {
-
-				if (hilos[i] == null || !hilos[i].isAlive()) {
-					// Si es la primera vez que se 'empieza'
-					// o el hilo ya ha sido interrumpido
-					hilos[i] = new Thread(new BallController(balls[i]));
-					hilos[i].start();
-				}
+			if (hilos!=null)
+				for (int i=0; i<N_BALL; i++){
+					if (hilos[i]!=null)
+						hilos[i].interrupt();
 			}
-
-			if (hiloTablero == null || !hiloTablero.isAlive()) {
-				// Si es la primera vez que se 'empieza'
-				// o el hilo ya ha sido interrumpido
-				hiloTablero = new Thread(new BoardController(board));
-				hiloTablero.start();
-			}
+			if (hiloTablero!=null)
+				hiloTablero.interrupt();	
 
 		}
 	}
