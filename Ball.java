@@ -37,6 +37,12 @@ public class Ball {
 		y += dy;
 		
 		reflect();
+		
+		//Comprobamos que la posición de la bola sea consistente
+		//con los límites del tablero
+		//También incluimos las comprobaciones parciales en los
+		//métodos setter.
+		assert (insideX() && insideY()): "Fuera del tablero";
 	}
 	
 	private boolean insideX(){
@@ -81,10 +87,12 @@ public class Ball {
 
 	public void setX(double x) {
 		this.x = x;
+		assert insideX(): "Fuera del tablero";
 	}
 
 	public void setY(double y) {
 		this.y = y;
+		assert insideY(): "Fuera del tablero";
 	}
 
 	public Image getImage() {
