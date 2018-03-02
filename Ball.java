@@ -13,11 +13,9 @@ public class Ball {
 	public Ball() {
 		ImageIcon ii = new ImageIcon(this.getClass().getResource(Ball));
 		image = ii.getImage();
-		
-		
+				
 		IMG_TAM_X = 32;
 		IMG_TAM_Y = 32;
-
 		
 		x = Billiards.Width/4-16;
 		y = Billiards.Height/2-16;
@@ -53,7 +51,6 @@ public class Ball {
 		return y < Board.BOTTOMBOARD-IMG_TAM_Y && y > Board.TOPBOARD;
 	}
 	
-
 	private void reflect() {
 		if (Math.abs(x + IMG_TAM_X - Board.RIGHTBOARD) <  Math.abs(dx)) {
 			fi = Math.PI - fi;

@@ -1,5 +1,3 @@
-package billar;
-
 public class BallController implements Runnable {
 	private Ball ball;
 	private static final int INTERVALO=20;
@@ -17,7 +15,7 @@ public class BallController implements Runnable {
 				Thread.sleep(INTERVALO);
 			}
 			
-		}catch(InterruptedException e){
+		} catch(InterruptedException e){
 			return;
 		}
 
